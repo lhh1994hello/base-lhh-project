@@ -11,6 +11,6 @@ import java.util.List;
  */
 public interface TblUserMapper {
 
-    public List<TblUser> findAll();
+    public List<TblUser> selectAll();
 
 }

@@ -26,7 +26,7 @@ public class HelloController {
      */
     @RequestMapping(value = "/findAll")
     public Msg findAll() {
-        List<TblUser> userList = tblUserMapper.findAll();
+        List<TblUser> userList = tblUserMapper.selectAll();
         return Msg.Success().add("userList", userList);
     }
 }
