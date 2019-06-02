@@ -13,4 +13,8 @@ public interface TblUserMapper {
 
     public List<TblUser> selectAll();
 
+    public List<TblUser> findByUsernameAndPassword(String username, String password);
+
+    public List<TblUser> findByExampleWithSelect(TblUser user);
+
 }
