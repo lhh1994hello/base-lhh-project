@@ -2,6 +2,7 @@ package com.lhh.controller;
 
 import com.lhh.bean.TblUser;
 import com.lhh.mapper.TblUserMapper;
+import com.lhh.service.UserService;
 import com.lhh.util.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +22,17 @@ public class HelloController {
     @Autowired
     private TblUserMapper tblUserMapper;
 
+//    @Autowired
+//    private UserService userService;
+
+
     /**
      * @return
      */
     @RequestMapping(value = "/findAll")
     public Msg findAll() {
         List<TblUser> userList = tblUserMapper.selectAll();
+//        System.out.println(userService == userService2);
         return Msg.Success().add("userList", userList);
     }
 }
