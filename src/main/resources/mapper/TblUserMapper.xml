@@ -2,21 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lhh.mapper.TblUserMapper">
 
-    <sql id="base_sql_column">
-        id, username, password, age, sex, dept_id, create_time
+
+    <sql id="base_column">
+      id,username,password,age,sex,dept_id,create_time
     </sql>
 
     <select id="selectAll" resultType="com.lhh.bean.TblUser">
+       select * from tbl_user
         select
-        <include refid="base_sql_column"/>
+        <include refid="base_column"/>
         from tbl_user
     </select>
-
-    <select id="findByUsernameAndPassword" resultType="com.lhh.bean.TblUser">
-        select
-        <include refid="base_sql_column"/>
-        from tbl_user where username='${param1}' and password=#{param2}
+    <!--返回单条记录，最多只能返回一条记录，否则就会报错-->
+    <select id="findSingleUserReturnMap" resultType="map">
+        SELECT
+        <include refid="base_column"/>
+        from tbl_user where id=#{id}
+    </select>    <!--返回单条记录，最多只能返回一条记录，否则就会报错-->
+    <select id="findSingleUserReturnMap" resultType="map">
+        SELECT
+        <include refid="base_column"/>
+        from tbl_user where id=#{id}
     </select>
+
 
     <select id="findByExampleWithSelect" parameterType="com.lhh.bean.TblUser" resultType="com.lhh.bean.TblUser">
         select

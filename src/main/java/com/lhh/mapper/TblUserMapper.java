@@ -1,8 +1,10 @@
 package com.lhh.mapper;
 
 import com.lhh.bean.TblUser;
+import org.apache.ibatis.annotations.MapKey;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: lhh
@@ -13,8 +15,10 @@ public interface TblUserMapper {
 
     public List<TblUser> selectAll();
 
-    public List<TblUser> findByUsernameAndPassword(String username, String password);
+     //返回map类型，最多只有一条记录
+    public Map<String, Object> findSingleUserReturnMap(int id);
 
-    public List<TblUser> findByExampleWithSelect(TblUser user);
-
+    //返回map类型，多条记录,MapKey用来指定map的键
+    @MapKey("id")
+    public Map<String, TblUser> findMultUserReturnMap(String username);
 }
