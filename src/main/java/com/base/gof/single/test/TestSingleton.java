@@ -30,7 +30,7 @@ public class TestSingleton {
         final TestSingleton lock = new TestSingleton();
         lock.setLock(true);
         ExecutorService executorService = Executors.newCachedThreadPool();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             executorService.execute(new Runnable() {
 
                 public void run() {
@@ -44,11 +44,12 @@ public class TestSingleton {
                 }
             });
         }
-        Thread.sleep(5000);
+        Thread.sleep(500);
         lock.setLock(false);
-        Thread.sleep(5000);
+        Thread.sleep(500);
         System.out.println("------并发情况下我们取到的实例------");
         for (String instance : instanceSet) {
+            System.out.println("==============>");
             System.out.println(instance);
         }
         executorService.shutdown();
