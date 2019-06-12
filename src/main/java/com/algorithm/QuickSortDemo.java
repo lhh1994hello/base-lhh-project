@@ -53,8 +53,6 @@ public class QuickSortDemo {
         int temp = s[i];
         s[i] = s[left];
         s[left] = temp;
-        // s[i] = base;
-        // s[left] =
         logger.info("基准:{},i:{}，排序结果：{}", base, i, Arrays.toString(s));
         quickSort(s, left, i - 1);
         quickSort(s, i + 1, right);
