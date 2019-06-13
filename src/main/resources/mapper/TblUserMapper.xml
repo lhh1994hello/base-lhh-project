@@ -8,7 +8,7 @@
     </sql>
 
     <select id="selectAll" resultType="com.lhh.bean.TblUser">
-       select * from tbl_user
+        select * from tbl_user
         select
         <include refid="base_column"/>
         from tbl_user
@@ -18,11 +18,12 @@
         SELECT
         <include refid="base_column"/>
         from tbl_user where id=#{id}
-    </select>    <!--返回单条记录，最多只能返回一条记录，否则就会报错-->
-    <select id="findSingleUserReturnMap" resultType="map">
+    </select>
+
+    <select id="findByUsernameAndPassword">
         SELECT
         <include refid="base_column"/>
-        from tbl_user where id=#{id}
+        from tbl_user where username=#{username} and password=#{password}
     </select>
 
 

@@ -4,6 +4,7 @@ package com.algorithm;
  * @Author: lhh
  * @Date: 2019/6/9 10:10
  * @Version 1.0
+ * 二分查找
  */
 public class BinarySearchDemo {
     public static void main(String[] args) {
