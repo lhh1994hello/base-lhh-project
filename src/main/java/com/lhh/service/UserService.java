@@ -1,7 +1,12 @@
 package com.lhh.service;
 
-import org.springframework.context.annotation.Scope;
+import com.lhh.bean.TblUser;
+import com.lhh.mapper.TblUserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @author lhh
@@ -9,11 +14,27 @@ import org.springframework.stereotype.Service;
  * @Description:
  * @Service 注解默认单例 如果想声明成多例对象可以使用@Scope("prototype")
  */
-@Scope(value = "prototype")
 @Service
+@SuppressWarnings("all")
+//开启事物
+//@Transactional
 public class UserService {
+
+    @Autowired
+    private TblUserMapper userMapper;
 
     public UserService() {
         System.out.println("UserService构造方法....");
+    }
+
+    //查询所有
+    public List<TblUser> selectAll() {
+        return userMapper.selectAll();
+    }
+
+    //按主键查询
+    @Transactional
+    public TblUser findTblUserById(Integer id) {
+        return userMapper.findTblUserById(id);
     }
 }

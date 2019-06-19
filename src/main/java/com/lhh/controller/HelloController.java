@@ -21,18 +21,31 @@ import java.util.List;
 public class HelloController {
     @Autowired
     private TblUserMapper tblUserMapper;
-
-//    @Autowired
-//    private UserService userService;
-
+    @Autowired
+    private UserService userService;
 
     /**
      * @return
      */
     @RequestMapping(value = "/findAll")
     public Msg findAll() {
-        List<TblUser> userList = tblUserMapper.selectAll();
-//        System.out.println(userService == userService2);
-        return Msg.Success().add("userList", userList);
+        List<TblUser> tblUserList = userService.selectAll();
+        List<TblUser> tblUserList2 = userService.selectAll();
+        return Msg.Success().add("userList", tblUserList);
     }
+
+    /**
+     * 按主键查询
+     *
+     * @return
+     */
+    @RequestMapping(value = "/findTblUserById")
+    public Msg findTblUserById() {
+        TblUser tblUser = userService.findTblUserById(1);
+        System.out.println("========================================================================================================================================================");
+        TblUser tblUser2 = userService.findTblUserById(1);
+        System.out.println("结果：" + (tblUser == tblUser2));
+        return Msg.Success().add("tblUser", tblUser);
+    }
+
 }

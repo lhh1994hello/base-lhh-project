@@ -3,26 +3,31 @@
 <mapper namespace="com.lhh.mapper.TblUserMapper">
 
 
-    <sql id="base_column">
+    <sql id="base_sql_column">
       id,username,password,age,sex,dept_id,create_time
     </sql>
 
+    <select id="findTblUserById" resultType="com.lhh.bean.TblUser">
+        SELECT
+        <include refid="base_sql_column"/>
+        FROM tbl_user where id=#{id}
+    </select>
+
     <select id="selectAll" resultType="com.lhh.bean.TblUser">
-        select * from tbl_user
         select
-        <include refid="base_column"/>
+        <include refid="base_sql_column"/>
         from tbl_user
     </select>
     <!--返回单条记录，最多只能返回一条记录，否则就会报错-->
     <select id="findSingleUserReturnMap" resultType="map">
         SELECT
-        <include refid="base_column"/>
+        <include refid="base_sql_column"/>
         from tbl_user where id=#{id}
     </select>
 
     <select id="findByUsernameAndPassword">
         SELECT
-        <include refid="base_column"/>
+        <include refid="base_sql_column"/>
         from tbl_user where username=#{username} and password=#{password}
     </select>
 
