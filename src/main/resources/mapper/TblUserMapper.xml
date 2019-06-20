@@ -2,6 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lhh.mapper.TblUserMapper">
 
+    <!--开启二级缓存,eviction：回收策略，flushInterval：每隔60秒刷新缓存数据，size：缓存512个对象的引用
+         https://my.oschina.net/watsonos/blog/1636186
+    -->
+    <cache type="com.lhh.cache.MybatisRedisCache">
+        <property name="eviction" value="LRU"/>
+        <property name="flushInterval" value="6000000"/>
+        <property name="size" value="1024"/>
+        <property name="readOnly" value="false"/>
+    </cache>
 
     <sql id="base_sql_column">
       id,username,password,age,sex,dept_id,create_time

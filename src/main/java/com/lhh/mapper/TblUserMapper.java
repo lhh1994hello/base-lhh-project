@@ -1,7 +1,6 @@
 package com.lhh.mapper;
 
 import com.lhh.bean.TblUser;
-import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Param;
 
@@ -14,7 +13,7 @@ import java.util.Map;
  * @Version 1.0
  * SpringBoot中默认帮我们全局开启了二级缓存，如果想要使用二级缓存还需要在mapper上注明。
  */
-@CacheNamespace
+//@CacheNamespace(implementation = MybatisRedisCache.class)
 public interface TblUserMapper {
 
     public List<TblUser> selectAll();
